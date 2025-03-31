@@ -1,2 +1,2 @@
 # ripe
-Fruit Quality detection
+Fruit Quality Detection
