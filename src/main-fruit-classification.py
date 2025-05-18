@@ -25,6 +25,10 @@ from collections import Counter
 import random
 from improved_training_monitoring import setup_enhanced_monitoring, add_activation_visualizer
 
+# --- Use absolute paths ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+
 # --- Verify TensorFlow GPU (Metal) Initialization ---
 print("TensorFlow Version:", tf.__version__)
 physical_devices = tf.config.list_physical_devices()
@@ -60,18 +64,20 @@ plt.rcParams.update({
 HIGH_DPI = 300 # DPI for saved figures
 
 # --- Define Output Directory ---
-OUTPUT_DIR = "output_files_multiclass"
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output_files_multiclass")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 print(f"All files will be saved in: {OUTPUT_DIR}/")
 
 # --- Define directories ---
-bad_quality_dir = './data/Processed Images_Fruits/Bad Quality_Fruits'
-good_quality_dir = './data/Processed Images_Fruits/Good Quality_Fruits'
+DATA_DIR = os.path.join(PROJECT_ROOT, "data/Processed Images_Fruits")
+bad_quality_dir = os.path.join(DATA_DIR, "Bad Quality_Fruits")
+good_quality_dir = os.path.join(DATA_DIR, "Good Quality_Fruits")
 # Mixed quality directory is excluded for this classification
 
 # Check if data directories exist
 if not os.path.isdir(bad_quality_dir) or not os.path.isdir(good_quality_dir):
     print("ERROR: Data directories not found. Please check paths.")
+    print(f"Looking for: \n- {bad_quality_dir}\n- {good_quality_dir}")
     exit()
 
 # --- Get class distribution to determine balanced sampling ---

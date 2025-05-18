@@ -14,8 +14,17 @@ import matplotlib.pyplot as plt
 from tensorflow import keras
 
 # --- Configuration ---
-MODEL_DIR = "../models"
+# Use absolute paths based on script location
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+MODEL_DIR = os.path.join(PROJECT_ROOT, "models")
 TARGET_SIZE = (224, 224)  # Must match the size used for training
+
+# If environment variable for models directory is set, use it
+if 'MODELS_DIR' in os.environ:
+    MODEL_DIR = os.environ['MODELS_DIR']
+
+print(f"Using models directory: {MODEL_DIR}")
 
 # --- Define FocalLoss for model loading ---
 @tf.keras.utils.register_keras_serializable()

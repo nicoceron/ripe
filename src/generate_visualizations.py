@@ -19,10 +19,18 @@ import pandas as pd
 import random
 from glob import glob
 
+# --- Use absolute paths based on script location ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+
 # --- Configuración ---
-OUTPUT_DIR = "output_files_multiclass/visualizations"
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output_files_multiclass/visualizations")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 print(f"Las visualizaciones se guardarán en: {OUTPUT_DIR}/")
+
+# If environment variables are set, use them
+if 'OUTPUT_DIR' in os.environ:
+    OUTPUT_DIR = os.environ['OUTPUT_DIR']
 
 # Estilo de gráficos
 plt.style.use('default')

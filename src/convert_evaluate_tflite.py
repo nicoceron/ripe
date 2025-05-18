@@ -14,18 +14,27 @@ import time
 from tensorflow.keras import layers # type: ignore
 from ai_edge_litert.interpreter import Interpreter
 
+# --- Use absolute paths based on script location ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+
 # --- Configuration ---
-MODEL_DIR = "output_files_multiclass" # Directory where the Keras model and class names are saved
-DATA_DIR = "data/Processed Images_Fruits" # Base directory containing Good/Bad Quality folders
+MODEL_DIR = os.path.join(PROJECT_ROOT, "output_files_multiclass") # Directory where the Keras model and class names are saved
+DATA_DIR = os.path.join(PROJECT_ROOT, "data/Processed Images_Fruits") # Base directory containing Good/Bad Quality folders
 BAD_QUALITY_DIR = os.path.join(DATA_DIR, 'Bad Quality_Fruits')
 GOOD_QUALITY_DIR = os.path.join(DATA_DIR, 'Good Quality_Fruits')
 TARGET_SIZE = (224, 224) # Must match the size used for training
 INPUT_SHAPE = (TARGET_SIZE[0], TARGET_SIZE[1], 3)
 BATCH_SIZE = 32 # Batch size for evaluation (can adjust for TFLite if needed)
-TFLITE_OUTPUT_DIR = "tflite_export" # Directory to save TFLite model and results
+TFLITE_OUTPUT_DIR = os.path.join(PROJECT_ROOT, "tflite_export") # Directory to save TFLite model and results
 HIGH_DPI = 300
 
+# If environment variables are set, use them
+if 'MODELS_DIR' in os.environ:
+    MODEL_DIR = os.environ['MODELS_DIR']
+
 os.makedirs(TFLITE_OUTPUT_DIR, exist_ok=True)
+print(f"Using model directory: {MODEL_DIR}")
 print(f"TFLite model and evaluation results will be saved in: {TFLITE_OUTPUT_DIR}")
 
 # --- Helper Functions (Copied/adapted from training/evaluation script) ---
