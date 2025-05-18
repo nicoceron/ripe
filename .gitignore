@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Large files
+*.keras
+*.h5
+*.hdf5
+*.zip
+# Keep the .tflite model for the demo
+# *.tflite
+
+# Large directories
+data/Processed Images_Fruits/
+output_files_multiclass/augmented/
+output_files_multiclass/training_logs_*/
+
+# Backup files
+*~
+*.bak
+*.old
+*.temp
+temp/
+backup/
+
+# Local files
+local/
+private/
+demo/results/
+
+# Folders to exclude
+trash/ 

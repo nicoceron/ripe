@@ -1,0 +1,23 @@
+Classification Report
+=======================
+
+Test Accuracy: 0.9991
+
+                  precision    recall  f1-score   support
+
+       Apple_Bad      1.000     0.998     0.999       526
+      Apple_Good      0.998     1.000     0.999       411
+      Banana_Bad      1.000     1.000     1.000       502
+     Banana_Good      1.000     1.000     1.000       430
+       Guava_Bad      1.000     1.000     1.000       206
+      Guava_Good      1.000     0.996     0.998       235
+        Lime_Bad      1.000     0.995     0.998       208
+       Lime_Good      0.996     1.000     0.998       224
+      Orange_Bad      0.995     1.000     0.997       393
+     Orange_Good      1.000     0.997     0.999       391
+ Pomegranate_Bad      1.000     1.000     1.000       236
+Pomegranate_Good      1.000     1.000     1.000       920
+
+        accuracy                          0.999      4682
+       macro avg      0.999     0.999     0.999      4682
+    weighted avg      0.999     0.999     0.999      4682

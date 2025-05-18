@@ -1,0 +1,24 @@
+Classification Report (Full Dataset)
+===================================
+
+Overall Accuracy: 0.9994
+Overall Loss: 0.0005
+
+                  precision    recall  f1-score   support
+
+       Apple_Bad      1.000     0.999     1.000      3483
+      Apple_Good      0.999     1.000     1.000      2842
+      Banana_Bad      1.000     1.000     1.000      3311
+     Banana_Good      1.000     1.000     1.000      2694
+       Guava_Bad      1.000     1.000     1.000      1129
+      Guava_Good      1.000     0.997     0.999      1152
+        Lime_Bad      1.000     0.998     0.999      1085
+       Lime_Good      1.000     0.998     0.999      1094
+      Orange_Bad      0.997     1.000     0.998      2754
+     Orange_Good      0.998     0.997     0.998      2682
+ Pomegranate_Bad      1.000     1.000     1.000      1187
+Pomegranate_Good      1.000     1.000     1.000      5940
+
+        accuracy                          0.999     29353
+       macro avg      0.999     0.999     0.999     29353
+    weighted avg      0.999     0.999     0.999     29353

@@ -1,0 +1,23 @@
+TFLite Classification Report (Full Dataset)
+=========================================
+
+Overall Accuracy: 0.9876
+
+                  precision    recall  f1-score   support
+
+       Apple_Bad      0.992     0.973     0.983      3483
+      Apple_Good      0.938     0.998     0.967      2842
+      Banana_Bad      0.999     0.991     0.995      3311
+     Banana_Good      0.987     1.000     0.993      2694
+       Guava_Bad      0.998     0.993     0.996      1129
+      Guava_Good      0.997     0.995     0.996      1152
+        Lime_Bad      0.991     0.988     0.989      1085
+       Lime_Good      0.997     0.996     0.997      1094
+      Orange_Bad      0.993     0.974     0.983      2754
+     Orange_Good      0.986     0.962     0.974      2682
+ Pomegranate_Bad      1.000     0.975     0.987      1187
+Pomegranate_Good      0.994     1.000     0.997      5940
+
+        accuracy                          0.988     29353
+       macro avg      0.989     0.987     0.988     29353
+    weighted avg      0.988     0.988     0.988     29353
