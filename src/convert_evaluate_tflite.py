@@ -13,6 +13,7 @@ from collections import Counter
 import time
 from tensorflow.keras import layers # type: ignore
 from ai_edge_litert.interpreter import Interpreter
+import argparse
 
 # --- Use absolute paths based on script location ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +29,11 @@ INPUT_SHAPE = (TARGET_SIZE[0], TARGET_SIZE[1], 3)
 BATCH_SIZE = 32 # Batch size for evaluation (can adjust for TFLite if needed)
 TFLITE_OUTPUT_DIR = os.path.join(PROJECT_ROOT, "tflite_export") # Directory to save TFLite model and results
 HIGH_DPI = 300
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Convert and evaluate TFLite model')
+parser.add_argument('--model', type=str, default=None, help='Path to the model file')
+args = parser.parse_args()
 
 # If environment variables are set, use them
 if 'MODELS_DIR' in os.environ:
@@ -250,7 +256,7 @@ def get_all_filepaths_labels(base_dir_good, base_dir_bad):
 # --- Main Conversion and Evaluation Logic ---
 
 # 1. Load Keras Model
-keras_model_path = os.path.join(MODEL_DIR, "fruit_quality_multiclass_model.keras")
+keras_model_path = args.model or os.path.join(MODEL_DIR, "fruit_quality_multiclass_model.keras")
 print(f"\nLoading Keras model from: {keras_model_path}")
 if not os.path.exists(keras_model_path):
     print("ERROR: Keras Model file not found!")
@@ -266,7 +272,8 @@ except Exception as e:
     exit()
 
 # 2. Load Class Names (Needed BEFORE building inference model)
-class_names_path = os.path.join(MODEL_DIR, 'class_names.npy')
+model_dir = os.path.dirname(keras_model_path)
+class_names_path = os.path.join(model_dir, 'class_names.npy')
 print(f"Loading class names from: {class_names_path}")
 if not os.path.exists(class_names_path):
     print("ERROR: Class names file not found! Cannot proceed.")

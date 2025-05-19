@@ -56,6 +56,13 @@ data/Processed Images_Fruits/
     └── Pomegranate_Bad/
 ```
 
+### Dataset Access
+
+You can access the dataset images from the following sources:
+
+- Mendeley Data: [https://data.mendeley.com/datasets/b6fftwbr2v/1](https://data.mendeley.com/datasets/b6fftwbr2v/1)
+- Kaggle: [https://www.kaggle.com/datasets/sriramr/fruits-fresh-and-rotten-for-classification](https://www.kaggle.com/datasets/sriramr/fruits-fresh-and-rotten-for-classification)
+
 ## Requirements
 
 - Python 3.8+

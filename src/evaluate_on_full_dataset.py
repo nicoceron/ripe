@@ -10,6 +10,7 @@ from keras.api.utils import to_categorical
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 import seaborn as sns
 from collections import Counter
+import argparse
 
 # --- Use absolute paths based on script location ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -25,6 +26,11 @@ INPUT_SHAPE = (TARGET_SIZE[0], TARGET_SIZE[1], 3)
 BATCH_SIZE = 32 # Batch size for evaluation
 EVAL_OUTPUT_DIR = os.path.join(MODEL_DIR, "full_dataset_evaluation") # Subdir for full eval results
 HIGH_DPI = 300
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Evaluate model on full dataset')
+parser.add_argument('--model', type=str, default=None, help='Path to the model file')
+args = parser.parse_args()
 
 # If environment variables are set, use them
 if 'MODELS_DIR' in os.environ:
@@ -209,7 +215,7 @@ def get_all_filepaths_labels(base_dir_good, base_dir_bad):
 # --- Main Evaluation Logic ---
 
 # 1. Load Model
-model_path = os.path.join(MODEL_DIR, "fruit_quality_multiclass_model.keras")
+model_path = args.model or os.path.join(MODEL_DIR, "fruit_quality_multiclass_model.keras")
 print(f"\nLoading trained model from: {model_path}")
 if not os.path.exists(model_path):
     print("ERROR: Model file not found!")
@@ -227,7 +233,9 @@ except Exception as e:
     exit()
 
 # 2. Load Class Names
-class_names_path = os.path.join(MODEL_DIR, 'class_names.npy')
+# Use the directory containing the model file for class names
+model_dir = os.path.dirname(model_path)
+class_names_path = os.path.join(model_dir, 'class_names.npy')
 print(f"Loading class names from: {class_names_path}")
 if not os.path.exists(class_names_path):
     print("ERROR: Class names file not found!")
